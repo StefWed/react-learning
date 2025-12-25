@@ -12,7 +12,7 @@ node
 const books = ["Dune", "The Hobbit"]
 books.map(b => b.toUpperCase())
 ```
-----
+---
  Day 2
 
  Day 2 was more about theory - mental models: the problem React solves, about JSX, example for React-style component, and it was also about what react is not: a framework (it’s a library), responsible for routing, responsible for data fetching or responsible for styling. 

@@ -1,16 +1,23 @@
 import './App.css'
 import Greeting from './Greeting'
+import { useState } from 'react'
 
 function App() {
+  console.log("App rendered")
+  
+  const [count, setCount] = useState(0)
+
   return (
     <div>
-      <Greeting name="Steffi" />
-      <Greeting name="React" />
-      <Greeting name="World" />
+      <h1>Count: {count}</h1>
+      <button onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
     </div>
   )
 }
 
 export default App
+
 
 

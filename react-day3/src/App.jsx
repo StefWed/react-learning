@@ -1,23 +1,30 @@
-import './App.css'
-import Greeting from './Greeting'
 import { useState } from 'react'
+import Greeting from './Greeting'
 
 function App() {
-  console.log("App rendered")
-  
-  const [count, setCount] = useState(0)
+  const [name, setName] = useState("Steffi")
+
+  function handleChange(event) {
+    setName(event.target.value)
+  }
 
   return (
     <div>
-      <h1>Count: {count}</h1>
-      <button onClick={() => setCount(count + 1)}>
-        Increment
-      </button>
+      <Greeting name={name} />
+
+      <input
+        value={name}
+        onChange={handleChange}
+      />
+
+      { name && <p>You typed: {name}</p> }
     </div>
   )
 }
 
 export default App
+
+
 
 
 

@@ -30,3 +30,8 @@ Running `npm create vite@latest react-day3 -- --template react` in terminal, I u
 Day 4
 
 Read some theory about what State is. Add first state hook to App.jsx and ran app again. Looked deeper into some parts of the hook. See readme in react-day3 for more info. 
+
+---
+Day 5
+
+Focused on passing data between components and handling user input in React. I worked with props as function arguments, introduced controlled inputs using useState, and connected user events (onChange) to state updates. This day emphasized React’s “single source of truth” principle and showed how UI can be conditionally rendered based on state.

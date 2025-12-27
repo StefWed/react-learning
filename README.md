@@ -35,3 +35,9 @@ Read some theory about what State is. Add first state hook to App.jsx and ran ap
 Day 5
 
 Focused on passing data between components and handling user input in React. I worked with props as function arguments, introduced controlled inputs using useState, and connected user events (onChange) to state updates. This day emphasized React’s “single source of truth” principle and showed how UI can be conditionally rendered based on state.
+
+---
+Day 6
+
+Read some more info, theoretics and looked at examples for JSX. Covered Expressions in JSX, how to insert a larger block of HTML, comments in JSX and JSX in React components. Other than that, following take-aways: HTML code must be wrapped in ONE top level element. Alternatively, a "fragment" can be used to wrap multiple lines. HTML elements must be properly closed. The class attribute is a much used attribute in HTML, but since JSX is rendered as JavaScript, and the class keyword is a reserved word in JavaScript, you are not allowed to use it in JSX.
+Use  attribute className instead.

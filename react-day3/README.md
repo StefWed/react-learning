@@ -76,3 +76,23 @@ The React `useState` Hook allows us to track state in a function component.
     export default App
 
 A simple counter that increments on click and shows the current value. (Button click - Calls setCount(count + 1), updating state.)
+
+
+#### Passing props from a parent component (App) to a child component (Greeting) (done in App.jsx)
+
+    import { useState } from 'react'
+    import Greeting from './Greeting'
+    
+    function App() {
+      const [name, setName] = useState("Steffi")
+    
+      return (
+        <div>
+          <Greeting name={name} />
+        </div>
+      )
+    }
+    
+    export default App
+
+name={name} is passing the prop. The Greeting component receives name as a prop (argument). So Greeting name={name} is like calling a function with an argument: Greeting({name: "Steffi"}).

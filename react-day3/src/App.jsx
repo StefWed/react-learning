@@ -1,29 +1,22 @@
 import { useState } from 'react'
-import Greeting from './Greeting'
 
 function App() {
-  const [name, setName] = useState("Steffi")
-
-  function handleChange(event) {
-    setName(event.target.value)
-  }
+  const [names] = useState(["Steffi", "Alex", "Jamie"])
 
   return (
     <div>
-      <Greeting name={name} />
+      <h1>Names</h1>
 
-      <input
-        value={name}
-        onChange={handleChange}
-      />
-
-      { name && <p>You typed: {name}</p> }
+      <ul>
+        {names.map(name => (
+          <li key={name}>{name}</li>
+        ))}
+      </ul>
     </div>
   )
 }
 
 export default App
-
 
 
 

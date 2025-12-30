@@ -34,15 +34,25 @@ Read some theory about what State is. Add first state hook to App.jsx and ran ap
 ---
 Day 5
 
-Focused on passing data between components and handling user input in React. I worked with props as function arguments, introduced controlled inputs using useState, and connected user events (onChange) to state updates. This day emphasized React’s “single source of truth” principle and showed how UI can be conditionally rendered based on state.
-
+Focused on passing data between components and handling user input in React. I worked with props as function arguments, introduced controlled inputs using useState, and connected user events (onChange) to state updates.
 ---
 Day 6
 
-Read some more info, theory on JSX and looked at examples for JSX. Covered Expressions in JSX, how to insert a larger block of HTML, comments in JSX and JSX in React components. Other than that, following take-aways: HTML code must be wrapped in ONE top level element. Alternatively, a "fragment" can be used to wrap multiple lines. HTML elements must be properly closed. The class attribute is a much used attribute in HTML, but since JSX is rendered as JavaScript, and the class keyword is a reserved word in JavaScript, you are not allowed to use it in JSX.
-Use  attribute className instead.
+Read some more info, theory on JSX and looked at examples for JSX. Covered Expressions in JSX, how to insert a larger block of HTML, comments in JSX and JSX in React components. Other than that, following take-aways: HTML code must be wrapped in ONE top level element. Alternatively, a "fragment" can be used to wrap multiple lines. HTML elements must be properly closed. The class attribute is a much used attribute in HTML, but since JSX is rendered as JavaScript, and the class keyword is a reserved word in JavaScript, you are not allowed to use it in JSX. Use  attribute className instead.
 
 ---
 Day 7
 
-Read some more info, theory on Components and Props. Focus for components was on Function components - write a component, using it in the application, that arguments can be passed into a component as props. Also, one can refer to components inside other components, and render components twice, whichmostly makes sense when working with arguments (props). Finally, how for parctice (maintainability and so on), it makes sense to split components into seperate files. To do that, create a new file in the `src` folder with a `.jsx` file extension and put the code inside it (given using Vite). Note that the filename must start with an uppercase character. To be able to use the component, you have to import the `.jsx` file in your application (main.jsx).
+Read some more info, theory on Components. Focus was on Function components - write a component, using it in the application, learned that arguments can be passed into a component as props. Also, one can refer to components inside other components, and render components twice, which mostly makes sense when working with arguments (props). Finally, how for practice (maintainability and so on), it makes sense to split components into seperate files. To do that, create a new file in the `src` folder with a `.jsx` file extension and put the code inside it (given using Vite). Note that the filename must start with an uppercase character. To be able to use the component, you have to import the `.jsx` file in your application (main.jsx).
+
+--- 
+Day 8
+
+Looked more into Props and Events. 
+
+Props are arguments passed into React components, and moreover Props are like function arguments in JavaScript and attributes in HTML. One can send as many properties as one wants. React props can be of any data type, including variables, numbers, strings, objects, arrays, and more. Strings can be sent inside quotes as in the examples above, but numbers, variables, and objects need to be sent inside curly brackets. Attributes are also how you pass data from one component to another, as parameters. Destructuring can be used to limit the properties a component. With Destructuring, one can set default values for props.
+
+Just like HTML DOM events, React can perform actions based on user events. React has the same events as HTML: click, change, mouseover etc. Theory was about adding Events, about passing an rgument to an event handler (use an arrow function). 
+
+---
+Day 9

@@ -96,3 +96,53 @@ A simple counter that increments on click and shows the current value. (Button c
     export default App
 
 name={name} is passing the prop. The Greeting component receives name as a prop (argument). So Greeting name={name} is like calling a function with an argument: Greeting({name: "Steffi"}).
+
+
+#### Controlled Input - Controlled Component
+
+    function App() {
+      const [name, setName] = useState("Steffi")
+    
+      return (
+        <div>
+          <Greeting name={name} />
+    
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+      )
+    }
+
+This adds an input field which lets one type a name. As one types, onChange updates the state with setName, which re-renders and shows the new name in the Greeting component.
+
+#### Breaking out the handler - define the handler separately for cleaner code
+
+    import { useState } from 'react'
+    import Greeting from './Greeting'
+    
+    function App() {
+      const [name, setName] = useState("Steffi")
+    
+      function handleChange(event) {
+        setName(event.target.value)
+      }
+    
+      return (
+        <div>
+          <Greeting name={name} />
+    
+          <input
+            value={name}
+            onChange={handleChange}
+          />
+    
+          { name && <p>You typed: {name}</p> }
+        </div>
+      )
+    }
+    
+    export default App
+
+Events (click, change, mouseover) are data pipelines. The event object carries data from the DOM element to the handler function, which then updates state.

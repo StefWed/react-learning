@@ -35,6 +35,7 @@ Read some theory about what State is. Add first state hook to App.jsx and ran ap
 Day 5
 
 Focused on passing data between components and handling user input in React. I worked with props as function arguments, introduced controlled inputs using useState, and connected user events (onChange) to state updates.
+
 ---
 Day 6
 
@@ -56,3 +57,5 @@ Just like HTML DOM events, React can perform actions based on user events. React
 
 ---
 Day 9
+
+Built a dynamic name list application that demonstrates how user interactions flow through event handlers to update state, triggering component re-renders that reflect changes in the UI. I learned about the importance of key props when rendering lists, which help React efficiently track and update individual items. The exercise reinforced React's unidirectional data flow: user actions trigger handlers, handlers update state, and state changes cause targeted re-renders without full page reloads.

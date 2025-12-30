@@ -1,23 +1,32 @@
 import { useState } from 'react'
+import NameList from './NameList'
 
 function App() {
-  const [names] = useState(["Steffi", "Alex", "Jamie"])
+  const [names, setNames] = useState(["Steffi", "Alex"])
+  const [newName, setNewName] = useState("")
+  
+
+  function addName() {
+    setNames([...names, newName])
+    setNewName("")
+  }
+
 
   return (
     <div>
       <h1>Names</h1>
 
-      <ul>
-        {names.map(name => (
-          <li key={name}>{name}</li>
-        ))}
-      </ul>
+      <NameList names={names} />
+
+
+      <input
+        value={newName}
+        onChange={(e) => setNewName(e.target.value)}
+      />
+      
+      <button onClick={addName}>Add</button>
     </div>
   )
 }
 
 export default App
-
-
-
-

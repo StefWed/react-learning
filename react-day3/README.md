@@ -146,3 +146,101 @@ This adds an input field which lets one type a name. As one types, onChange upda
     export default App
 
 Events (click, change, mouseover) are data pipelines. The event object carries data from the DOM element to the handler function, which then updates state.
+
+#### Render a List in React
+
+    import { useState } from 'react'
+
+    function App() {
+      const [names] = useState(["Steffi", "Alex", "Jamie"])  
+
+      return (
+        <div>
+          <h1>Names</h1>
+
+          <ul>
+
+            {names.map(name => (
+              <li key={name}>{name}</li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    export default App
+
+When React renders a list, it needs to track which items are which - especially when the list changes (items added, removed, or reordered). Keys are needed to do so - without keys, React can't efficiently figure out what changed.
+
+
+#### Extracting a List Component
+
+Create src/NameList.jsx:
+
+    function NameList({ names }) {
+      return (
+        <ul>
+          {names.map(name => (
+            <li key={name}>{name}</li>
+          ))}
+        </ul>
+      )
+    }
+
+    export default NameList
+
+Use in App.jsx:
+
+    import { useState } from 'react'
+    import NameList from './NameList'
+
+    function App() {
+      const [names] = useState(["Steffi", "Alex", "Jamie"])
+
+      return (
+        <div>
+          <h1>Names</h1>
+          <NameList names={names} />
+        </div>
+      )
+    }
+
+    export default App
+
+This extracts the list rendering logic into its own reusable component. Instead of having the `.map()` code directly in App, ou move it to NameList.
+
+#### Dynamic Lists
+
+Add an input and button.
+
+    import { useState } from 'react'
+    import NameList from './NameList'
+
+    function App() {
+      const [names, setNames] = useState(["Steffi", "Alex"])
+      const [newName, setNewName] = useState("")
+
+      function addName() {
+        setNames([...names, newName])
+        setNewName("")
+      }
+
+      return (
+        <div>
+          <h1>Names</h1>
+
+          <NameList names={names} />
+
+          <input
+            value={newName}
+            onChange={(e) => setNewName(e.target.value)}
+          />
+
+          <button onClick={addName}>Add</button>
+        </div>
+      )
+    }
+
+    export default App
+
+There are two pieces of state: newName and names. The input filed controlled by newName state. The button calls addName which adds newName tothe names array, then clears the output.

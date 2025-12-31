@@ -51,7 +51,7 @@ Day 8
 
 Looked more into Props and Events. 
 
-Props are arguments passed into React components, and moreover Props are like function arguments in JavaScript and attributes in HTML. One can send as many properties as one wants. React props can be of any data type, including variables, numbers, strings, objects, arrays, and more. Strings can be sent inside quotes as in the examples above, but numbers, variables, and objects need to be sent inside curly brackets. Attributes are also how you pass data from one component to another, as parameters. Destructuring can be used to limit the properties a component. With Destructuring, one can set default values for props.
+Props are arguments passed into React components, and moreover Props are like function arguments in JavaScript and attributes in HTML. One can send as many properties as one wants. React props can be of any data type, including variables, numbers, strings, objects, arrays, and more. Strings can be sent inside quotes, but numbers, variables, and objects need to be sent inside curly brackets. Attributes are also how you pass data from one component to another, as parameters. Destructuring can be used to limit the properties a component. With Destructuring, one can set default values for props.
 
 Just like HTML DOM events, React can perform actions based on user events. React has the same events as HTML: click, change, mouseover etc. Theory was about adding Events, about passing an rgument to an event handler (use an arrow function). 
 

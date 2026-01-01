@@ -59,3 +59,8 @@ Just like HTML DOM events, React can perform actions based on user events. React
 Day 9
 
 Built a dynamic name list application that demonstrates how user interactions flow through event handlers to update state, triggering component re-renders that reflect changes in the UI. I learned about the importance of key props when rendering lists, which help React efficiently track and update individual items. The exercise reinforced React's unidirectional data flow: user actions trigger handlers, handlers update state, and state changes cause targeted re-renders without full page reloads.
+
+---
+Day 10
+
+The input functionality was refactored by extracting it into a separate AddName component, which keeps the code modular and maintainable. The names state was lifted up to the App component because both NameList (which displays names) and AddName (which adds names) need access to it. Child components now receive data through props and trigger changes by calling callback functions passed from the parent. This creates a predictable one-way data flow: props flow down from parent to children, and events flow up through callbacks, making the app easier to understand and debug.

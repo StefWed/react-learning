@@ -69,3 +69,8 @@ The input functionality was refactored by extracting it into a separate AddName 
 Day 11
 
 Started by introducing `useEffect` with a simple console log to show it runs after every render. The three dependency arrys were demonstrated: no array (every render), empty array (once on mount), and [names] (when names changes). Finally, this was applied to a practical example: persisting the names array to localStorage, using lazy state initialization to read saved data on mount and an effect with [names] dependency to automatically save changes. 
+
+---
+Day 12
+
+Day 12 focused on refactoring and structure rather than new features. State and side-effect logic (including localStorage persistance) was extracted into a custom hook to keep App.jsx clean and focused on composition. This makes the component hierarchy easier to read and reason about. The main takeaway was learning where logic should live as an application grows.

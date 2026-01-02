@@ -244,3 +244,83 @@ Add an input and button.
     export default App
 
 There are two pieces of state: newName and names. The input filed controlled by newName state. The button calls addName which adds newName tothe names array, then clears the output.
+
+
+#### Refactor: move input into its own component
+
+Create new file src/AddName.jsx
+
+    import { useState } from 'react'
+
+    function AddName({ onAdd }) {
+      const [value, setValue] = useState("")
+
+      function handleSubmit() {
+        onAdd(value)
+        setValue("")
+      }
+
+      return (
+        <div>
+          <input
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <button onClick={handleSubmit}>Add</button>
+        </div>
+      )
+    }
+
+    export default AddName
+
+This component does not own the list, it only reports intent ("add this name").
+
+
+#### Lift State Up to App
+
+Update App.jsx
+
+    import { useState } from 'react'
+    import NameList from './NameList'
+    import AddName from './AddName'
+
+    function App() {
+      const [names, setNames] = useState(["Steffi", "Alex"])
+
+      function addName(name) {
+        if (!name) return
+        setNames([...names, name])
+      }
+
+      return (
+        <div>
+          <h1>Names</h1>
+          <NameList names={names} />
+          <AddName onAdd={addName} />
+        </div>
+      )
+    }
+
+    export default App
+
+`const [names, setNames] = useState(["Steffi", "Alex"])`
+The "source of truth" - App owns the list of names
+
+
+Now:
+- `App` owns the data
+- `AddName` triggers changes
+- `NameList` just displays
+
+Reusable components: `AddName` doesn't care _what_ list it's adding to. You could use it for names, tasks, or emails - just pass a different `onAdd` function.
+
+Predictable data flow: There's only one place where `names` can change: the `App` component. You always know where to look.
+
+Easy debugging: If the name list is wrong, you check `App`. If the input behaves oddly, you check `AddName`. Clear boundaries.
+
+React avoids shared mutable state: Instead of multiple components directly modifying the same data (which causes chaos), only the owner can change it.
+
+Components secretly changing each other: `AddName` can't reach into `NameList` and mess with it. Everything goes through `App` as the mediator.
+
+
+#### Add first useEffect

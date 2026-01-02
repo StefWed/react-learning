@@ -64,3 +64,8 @@ Built a dynamic name list application that demonstrates how user interactions fl
 Day 10
 
 The input functionality was refactored by extracting it into a separate AddName component, which keeps the code modular and maintainable. The names state was lifted up to the App component because both NameList (which displays names) and AddName (which adds names) need access to it. Child components now receive data through props and trigger changes by calling callback functions passed from the parent. This creates a predictable one-way data flow: props flow down from parent to children, and events flow up through callbacks, making the app easier to understand and debug.
+
+---
+Day 11
+
+Started by introducing `useEffect` with a simple console log to show it runs after every render. The three dependency arrys were demonstrated: no array (every render), empty array (once on mount), and [names] (when names changes). Finally, this was applied to a practical example: persisting the names array to localStorage, using lazy state initialization to read saved data on mount and an effect with [names] dependency to automatically save changes. 

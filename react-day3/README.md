@@ -324,3 +324,38 @@ Components secretly changing each other: `AddName` can't reach into `NameList` a
 
 
 #### Add first useEffect
+
+In App.jsx add:
+
+     import { useEffect, useState } from 'rect'
+
+Inside the component:
+
+    useEffect(() => {
+      console.log("Effect ran")
+    })
+
+This is a minimal introduction to `useEffect` that demonstrates its most basic behavior. It can be controlled when the effect runs: The three dependency arrys were demonstrated: no array (every render), empty array (once on mount), and [names] (when names changes).
+
+#### Practical Example
+
+Add this effect to App:
+
+    useEffect(() => {
+      localStorage.setItem("names", JSON.stringify(names))
+    }, [names])
+
+
+Initialize state from storage:
+
+    const [names, setNames] = useState(() => {
+      const saved = localStorage.getItem("names")
+      return saved ? JSON.parse(saved) : ["Steffi", "Alex"]
+    })
+
+localStorage = browser’s tiny persistent database
+
+**What's happening:**
+1. **Lazy initialization** - `useState(() => {...})` runs only once on mount to read from localStorage. This avoids parsing JSON on every render.
+2. **Sync to localStorage** - whenever `names` changes, the effect saves the new value. This happens _after_ the render, so the UI updates immediately and storage syncs in the background.
+3. **The cycle** - load from storage → render → user updates state → React re-renders → effect saves to storage → refresh page → repeat

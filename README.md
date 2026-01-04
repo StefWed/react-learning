@@ -74,3 +74,8 @@ Started by introducing `useEffect` with a simple console log to show it runs aft
 Day 12
 
 Day 12 focused on refactoring and structure rather than new features. State and side-effect logic (including localStorage persistance) was extracted into a custom hook to keep App.jsx clean and focused on composition. This makes the component hierarchy easier to read and reason about. The main takeaway was learning where logic should live as an application grows.
+
+---
+Day 13
+
+Answer when state should live in a parent component and when it should remain local to a child. By adding a derived component that displays the number of names, lifting state up and passing data down via props was practiced. The key takeaway was that React applications are designed around predictable, one-way data flow rather than shared mutable state.

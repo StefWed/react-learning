@@ -359,3 +359,63 @@ localStorage = browser’s tiny persistent database
 1. **Lazy initialization** - `useState(() => {...})` runs only once on mount to read from localStorage. This avoids parsing JSON on every render.
 2. **Sync to localStorage** - whenever `names` changes, the effect saves the new value. This happens _after_ the render, so the UI updates immediately and storage syncs in the background.
 3. **The cycle** - load from storage → render → user updates state → React re-renders → effect saves to storage → refresh page → repeat
+
+
+#### Folder Structure Was Changed to
+
+    src/
+      components/
+        NameList.jsx
+        AddName.jsx
+      hooks/
+        useNames.js        ← new today
+      App.jsx
+      main.jsx
+
+
+#### Extract logic into a custom hook
+
+Create `src/hooks/useNames.js`:
+
+    import { useEffect, useState } from 'react'
+
+    export default function useNames() {
+      const [names, setNames] = useState(() => {
+        const saved = localStorage.getItem("names")
+        return saved ? JSON.parse(saved) : ["Steffi", "Alex"]
+      })
+
+      useEffect(() => {
+        localStorage.setItem("names", JSON.stringify(names))
+      }, [names])
+
+      return { names, setNames }
+    }
+
+
+Simplify `App.jsx`:
+
+    import NameList from './components/NameList'
+    import AddName from './components/AddName'
+    import useNames from './hooks/useNames'
+
+    function App() {
+      const { names, setNames } = useNames()
+
+      return (
+        <div>
+          <h1>Names</h1>
+
+          <NameList names={names} />
+
+          <AddName
+            onAdd={(name) => setNames([...names, name])}
+          />
+        </div>
+      )
+    }
+
+    export default App
+
+
+Custom hooks let one reuse and isolate logic. App components should stay small and readable.
